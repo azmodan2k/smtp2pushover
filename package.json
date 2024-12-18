@@ -9,7 +9,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
-    "sendmail": "printf \"To: to@test.com\nTo: to2@test.com\nSubject: subject\n\ntext\n\" | msmtp -v --host localhost --port 25 --from from@test.com -t",
+    "sendmail": "printf \"To: to@test.com\nTo: to2@test.com\nSubject: subject\n\ntext\n\" | msmtp -v --host localhost --port 25 --from from@test.com -t"
   },
   "dependencies": {
     "json-schema-to-ts": "^3.1.1",

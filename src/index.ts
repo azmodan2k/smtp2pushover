@@ -1,17 +1,13 @@
 #!/usr/bin/env node
 
-const Config = require("./config/schema").Config;
-const simpleParser = require("mailparser").simpleParser;
-const Push = require("pushover-notifications");
-const SMTPServer = require("smtp-server").SMTPServer;
+import { Logger } from "./log";
+import { Config } from "./config/schema";
+import { simpleParser } from "mailparser";
+import * as Pushover from "pushover-notifications";
+import { SMTPServer } from "smtp-server";
 
-const config = Config()
-
-function log(message: string) {
-  if(config.smtpConfig.logger) {
-    console.log(message);
-  }
-}
+const config = Config();
+const logger = new Logger(config);
 
 const server = new SMTPServer({
   authOptional: config.smtpConfig.authOptional,
@@ -44,16 +40,16 @@ const server = new SMTPServer({
       appToken = config.pushoverConfig.appTokens;
     }
 
-    log(`Subject -> ${subject}`);
-    log(`Text -> ${body}`);  
+    logger.LogInfo(`Subject -> ${subject}`);
+    logger.LogInfo(`Text -> ${body}`);  
 
     for ( var i = 0, l = appToken.length; i < l; i++ ) {
-      const push = new Push({
+      const push = new Pushover({
         user: config.pushoverConfig.userToken,
         token: appToken[i],
         onerror: function(err) {
           if ( err ) {
-            log(`Error ${err}`); 
+            logger.LogInfo(`Error ${err}`); 
             return callback(new Error(err));
           }          
         }
@@ -65,16 +61,15 @@ const server = new SMTPServer({
         message: body
       };
 
-      push.send( msg, function( _err, result ) {
-        log(`Result -> ${result}`); 
-        return callback();
-      })
+      push.send( msg, ( _err, result ) => logger.LogInfo(`Result -> ${result}`));
     }
+
+    return callback();
   },
 });
 
 server.on("error", (err) => {
-  log(`Error ${err.message}`);
+  logger.LogInfo(`Error ${err.message}`);
 });
 
 server.listen(config.smtpConfig.port);
