@@ -1,0 +1,36 @@
+{
+  "name": "smtp2pushover",
+  "version": "1.0.0",
+  "description": "A simple smtp server that forwards emails to pushover",
+  "main": "src/index.ts",
+  "repository": "https://github.com/azmodan2k/smtp2pushover.git",
+  "author": "Stefan Pietsch",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "sendmail": "printf \"To: to@test.com\nTo: to2@test.com\nSubject: subject\n\ntext\n\" | msmtp -v --host localhost --port 25 --from from@test.com -t",
+  },
+  "dependencies": {
+    "json-schema-to-ts": "^3.1.1",
+    "mailparser": "^3.7.2",
+    "merge-partially": "^2.0.2",
+    "pushover-notifications": "^1.2.3",
+    "smtp-server": "^3.13.6"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "cpy-cli": "^5.0.0",
+    "eslint": "^9.8.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.2.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": true
+  }
+}
