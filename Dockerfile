@@ -10,7 +10,6 @@ RUN npm run yarn install --frozen-lockfile
 COPY tsconfig.json .
 COPY src src
 RUN npm run yarn build && yarn install --production --frozen-lockfile
-RUN cp /app/src/config/config.dist.json /app/dist/config/config.json
 
 FROM node:${NODE_VERSION}-alpine AS production
 
