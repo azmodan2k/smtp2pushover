@@ -19,7 +19,7 @@
     "smtp-server": "^3.13.6"
   },
   "devDependencies": {
-    "@types/node": "^22.10.2",
+    "@types/node": "^22.13.0",
     "cpy-cli": "^5.0.0",
     "eslint": "^9.8.0",
     "eslint-config-prettier": "^9.1.0",
