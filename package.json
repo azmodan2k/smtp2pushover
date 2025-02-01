@@ -7,6 +7,7 @@
   "author": "Stefan Pietsch",
   "license": "MIT",
   "scripts": {
+    "yarn": "yarn",
     "build": "tsc",
     "start": "node dist/index.js",
     "sendmail": "printf \"To: to@test.com\nTo: to2@test.com\nSubject: subject\n\ntext\n\" | msmtp -v --host localhost --port 25 --from from@test.com -t"
@@ -16,7 +17,8 @@
     "mailparser": "^3.7.2",
     "merge-partially": "^2.0.2",
     "pushover-notifications": "^1.2.3",
-    "smtp-server": "^3.13.6"
+    "smtp-server": "^3.13.6",
+    "yarn": "^1.22.22"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",

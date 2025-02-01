@@ -1,11 +1,15 @@
-import { AppConfig } from "./config/schema";
-
 export class Logger{
-    constructor(private config: AppConfig) { }
+    constructor(private config: ConfigSchema) { }
 
-    LogInfo(message: string) {
+    LogInfo(message: any) {
         if(this.config.smtpConfig.logger && message) {
             console.log(message);
         }
     }
+
+    LogError(message: any) {
+        if(this.config.smtpConfig.logger && message) {
+            console.error(message);
+        }
+    }    
 }

@@ -1,0 +1,12 @@
+services:
+  smtppushover:
+    container_name: smtppushover
+    hostname: smtppushover
+    restart: always
+    image:
+    ports:
+      - "25:25"
+    environment:
+      - pushover_usertoken=xxx
+    cap_add:
+        - NET_ADMIN
