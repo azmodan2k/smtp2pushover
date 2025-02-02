@@ -4,7 +4,6 @@ import { Logger } from "./log";
 import { simpleParser } from "mailparser";
 import * as Pushover from "pushover-notifications";
 import { SMTPServer } from "smtp-server";
-const { env } = require('node:process');
 
 const { smtp_port, smtp_authOptional, smtp_secure, smtp_allowInsecureAuth, smtp_disabledCommands, smtp_logger, pushover_usertoken } = process.env;
 let config = confData as ConfigSchema;
@@ -22,7 +21,7 @@ const logger = new Logger(config);
 console.log(config);
 
 if(!config.pushoverConfig.userToken) {
-  logger.LogInfo("you have to provide a userToken");
+  logger.LogWarning("you have to provide a userToken");
 } else {
   const server = new SMTPServer({
     authOptional: config.smtpConfig.authOptional,

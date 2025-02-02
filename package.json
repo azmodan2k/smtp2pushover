@@ -1,6 +1,6 @@
 {
   "name": "smtp2pushover",
-  "version": "1.0.0",
+  "version": "0.1.1",
   "description": "A simple smtp server that forwards emails to pushover",
   "main": "src/index.ts",
   "repository": "https://github.com/azmodan2k/smtp2pushover.git",
@@ -13,9 +13,7 @@
     "sendmail": "printf \"To: to@test.com\nTo: to2@test.com\nSubject: subject\n\ntext\n\" | msmtp -v --host localhost --port 25 --from from@test.com -t"
   },
   "dependencies": {
-    "json-schema-to-ts": "^3.1.1",
     "mailparser": "^3.7.2",
-    "merge-partially": "^2.0.2",
     "pushover-notifications": "^1.2.3",
     "smtp-server": "^3.13.6",
     "yarn": "^1.22.22"
