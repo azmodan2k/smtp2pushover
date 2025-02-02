@@ -12,4 +12,10 @@ export class Logger{
             console.error(message);
         }
     }    
+
+    LogWarning(message: any) {
+        if(this.config.smtpConfig.logger && message) {
+            console.warn(message);
+        }
+    }  
 }
