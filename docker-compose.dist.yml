@@ -3,7 +3,7 @@ services:
     container_name: smtppushover
     hostname: smtppushover
     restart: always
-    image:
+    image: azmodan2k/smtp2pushover
     ports:
       - "25:25"
     environment:
