@@ -9,12 +9,12 @@ const { smtp_port, smtp_authOptional, smtp_secure, smtp_allowInsecureAuth, smtp_
 let config = confData as ConfigSchema;
 
 config.pushoverConfig.userToken = pushover_usertoken || config.pushoverConfig.userToken;
-config.smtpConfig.port = smtp_port || config.smtpConfig.port || 25;
-config.smtpConfig.authOptional = smtp_authOptional || config.smtpConfig.authOptional || true;
-config.smtpConfig.secure = smtp_secure || config.smtpConfig.secure || false;
-config.smtpConfig.allowInsecureAuth = smtp_allowInsecureAuth || config.smtpConfig.allowInsecureAuth || false;
-config.smtpConfig.disabledCommands = smtp_disabledCommands?.split(',').map(m => m.trim()) || config.smtpConfig.disabledCommands || [];
-config.smtpConfig.logger = smtp_logger || config.smtpConfig.logger || true;
+config.smtpConfig.port = smtp_port as unknown as number || config.smtpConfig.port as number || 25;
+config.smtpConfig.authOptional = smtp_authOptional as unknown as boolean || config.smtpConfig.authOptional as boolean || true;
+config.smtpConfig.secure = smtp_secure as unknown as boolean || config.smtpConfig.secure as boolean || false;
+config.smtpConfig.allowInsecureAuth = smtp_allowInsecureAuth as unknown as boolean || config.smtpConfig.allowInsecureAuth as boolean || false;
+config.smtpConfig.disabledCommands = smtp_disabledCommands?.split(',').map(m => m.trim()) || config.smtpConfig.disabledCommands as string[] || [];
+config.smtpConfig.logger = smtp_logger as unknown as boolean || config.smtpConfig.logger as boolean || true;
 
 const logger = new Logger(config);
 
