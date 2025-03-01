@@ -23,7 +23,7 @@
     "cpy-cli": "^5.0.0",
     "eslint": "^9.8.0",
     "eslint-config-prettier": "^9.1.0",
-    "prettier": "^3.2.5",
+    "prettier": "^3.5.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.2"
   },
